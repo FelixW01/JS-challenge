@@ -4,23 +4,28 @@ Inside a closure, create an object called PII (Personally Identifiable Informati
 
 
 
-function createPII(name, ssn) {
-        return{
-        getName() {
-            console.log(`Name: ${name}`)
-        },
-        // The only way to access the ssn is through calling the method
-        getSSN() {
-            console.log(`SSN: ${ssn}`)
+    function createPII(name, ssn) {
+        const PII = {
+        name: name,
+        ssn: ssn
+    };
+
+    return{
+            getName() {
+                console.log(`Name: ${PII.name}`)
+            },
+            // The only way to access the ssn is through calling the method
+            getSSN() {
+                console.log(`SSN: ${PII.ssn}`)
+            }
         }
     }
-}
-const PII = createPII('Felix', '595373751');
-// Name is not accessible with . notation
-console.log(PII.name, '<< Name is not accessible with notation')
-// Name is also accessible with method
-PII.getName();
-// SSN is not accessible without utilizing the getSSN method
-console.log(PII.ssn, '<< SSN is not accessible without method notation');
-// SSN is only accessible with method
-PII.getSSN();
+    const person = createPII('Felix', '595373751');
+    // Name is not accessible with . notation
+    console.log(person.name, '<< Name is not accessible with notation')
+    // Name is also accessible with method
+    person.getName();
+    // SSN is not accessible without utilizing the getSSN method
+    console.log(person.ssn, '<< SSN is not accessible without method notation');
+    // SSN is only accessible with method
+    person.getSSN();
